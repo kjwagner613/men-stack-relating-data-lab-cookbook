@@ -14,15 +14,13 @@ const ingredientsController = require('./controllers/ingredients.js');
 const port = process.env.PORT ? process.env.PORT : '3000';
 const isSignedIn = require('./middleware/is-signed-in.js');
 const passUserToView = require('./middleware/pass-user-to-view.js');
-
+const Recipe = require('./models/recipes.js');
 
 mongoose.connect(process.env.MONGODB_URI);
 
 mongoose.connection.on('connected', () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
-
-
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
@@ -34,22 +32,34 @@ app.use(
     saveUninitialized: true,
   })
 );
+app.use(passUserToView);
 
 app.get('/', (req, res) => {
-  res.render('index.ejs', {
-    user: req.session.user,
-  });
+  res.render('index.ejs');
 });
 
-app.get('/vip-lounge', (req, res) => {
-  if (req.session.user) {
-    res.send(`Welcome to the party ${req.session.user.username}.`);
-  } else {
-    res.send('Sorry, no guests allowed.');
+app.get('/recipes', async (req, res) => {
+  try {
+    const recipes = await Recipe.find({});
+    res.render('recipes/index.ejs', { recipes });
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
   }
 });
 
-app.use(passUserToView);
+app.get('/ingredients', async (req, res) => {
+  res.render('ingredients/index.ejs');
+});
+
+// app.get('/vip-lounge', (req, res) => {
+//   if (req.session.user) {
+//     res.send(`Welcome to the party ${req.session.user.username}.`);
+//   } else {
+//     res.send('Sorry, no guests allowed.');
+//   }
+// });
+
 app.use('/auth', authController);
 app.use(isSignedIn);
 app.use('/recipes', recipesController);

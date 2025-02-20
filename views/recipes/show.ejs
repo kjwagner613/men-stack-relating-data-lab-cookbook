@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= recipe.name %></title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1><%= recipe.name %></h1>
+    <p>Time to cook: <%= recipe.timeToCook.hours %> hrs <%= recipe.timeToCook.minutes %> mins</p>
+    <h2>Ingredients:</h2>
+    <ul>
+      <% recipe.ingredients.forEach(ingredient => { %>
+        <li><%= ingredient %></li>
+      <% }) %>
+    </ul>
+    <a href="/recipes">Back to Recipes</a>
+  </body>
+</html>
