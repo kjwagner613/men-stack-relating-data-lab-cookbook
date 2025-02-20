@@ -28,8 +28,8 @@ router.get('/:id', async (req, res) => {
     res.redirect('/recipes');
   }
 });
-
-// Route to handle form submission and create a new recipe
+ 
+// tried new Recipe(req.body); but it didn't work so found this breakdown method
 router.post('/', async (req, res) => {
   try {
     const newRecipe = new Recipe({
