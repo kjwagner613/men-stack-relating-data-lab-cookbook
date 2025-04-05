@@ -20,6 +20,14 @@
       <%= flashMessage %>
     </div>
     <% } %>
+    <% if (user) { %>
+      <div class="filter-buttons">
+        <button onclick="window.location.href='/recipes?filter=mine'">My Recipes</button>
+        <button onclick="window.location.href='/recipes?filter=others'">Other Users' Recipes</button>
+        <button onclick="window.location.href='/recipes'">All Recipes</button>
+      </div>
+    <% } %>
+    
     <h1>Welcome to My Recipes</h1>
     <div class="index-grid">
       <% if (recipes.length > 0) { %>
@@ -41,9 +49,9 @@
           </li>
           <% }) %>
         </ul>
-        <% } else { %>
+      <% } else { %>
         <p>You have not created any recipes yet.</p>
-        <% } %>
+      <% } %>
       </div>
     </div>
   </body>

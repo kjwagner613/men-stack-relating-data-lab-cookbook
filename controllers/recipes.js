@@ -3,10 +3,21 @@ const router = express.Router();
 const Recipe = require("../models/recipes.js");
 const Ingredient = require("../models/ingredient.js");
 
-// Index route
 router.get("/", async (req, res) => {
   try {
-    const recipes = await Recipe.find({}).populate("owner");
+    let recipes;
+
+    if (req.query.filter === "mine") {
+      recipes = await Recipe.find({ owner: req.session.user._id }).populate(
+        "owner"
+      );
+    } else if (req.query.filter === "others") {
+      recipes = await Recipe.find({
+        owner: { $ne: req.session.user._id },
+      }).populate("owner");
+    } else {
+      recipes = await Recipe.find({}).populate("owner");
+    }
 
     const flashMessage = req.session.flash?.message || null;
     req.session.flash = null;
@@ -22,7 +33,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// New route
 router.get("/new", async (req, res) => {
   try {
     const allIngredients = await Ingredient.find({});
@@ -36,7 +46,6 @@ router.get("/new", async (req, res) => {
   }
 });
 
-// Create route
 router.post("/", async (req, res) => {
   try {
     const existingIngredientIds = Array.isArray(req.body.ingredientIds)
@@ -87,7 +96,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Show route
 router.get("/:id", async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.id).populate("ingredients");
@@ -102,7 +110,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// Edit route
 router.get("/:id/edit", async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.id).populate("ingredients");
@@ -117,7 +124,6 @@ router.get("/:id/edit", async (req, res) => {
   }
 });
 
-// Update route
 router.put("/:id", async (req, res) => {
   try {
     const updatedRecipe = {
@@ -135,7 +141,6 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// Delete route
 router.delete("/:id", async (req, res) => {
   try {
     await Recipe.findByIdAndDelete(req.params.id);
