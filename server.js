@@ -55,7 +55,7 @@ app.use("/guest-index", (req, res) => {
 app.use(isSignedIn);
 
 // Protected routes
-
+app.use("/ingredientsList", ingredientsController);
 app.use("/ingredients", ingredientsController);
 app.use("/community", communityController);
 // Global error handling middleware

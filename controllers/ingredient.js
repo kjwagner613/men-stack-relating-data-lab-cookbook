@@ -23,13 +23,12 @@ router.get("/new", (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const newIngredient = new Ingredient({
-      name: req.body.name,
-    });
+      name: req.body.name.toLowerCase().trim() });
     await newIngredient.save();
     res.redirect("/ingredients");
   } catch (error) {
     console.log(error);
-    res.redirect("/ingredients/new");
+    res.redirect("/ingredients");
   }
 });
 
@@ -47,32 +46,29 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.get("/:id/edit", async (req, res) => {
+router.get('/:id/edit', async (req, res) => {
   try {
     const ingredient = await Ingredient.findById(req.params.id);
-    res.render("ingredients/edit.ejs", {
-      ingredient,
-      user: req.session.user,
-      req,
-    });
+    res.render('ingredients/edit.ejs', { ingredient });
   } catch (error) {
     console.log(error);
-    res.redirect("/ingredients");
+    res.redirect('/ingredients');
   }
 });
 
-router.put("/:id", async (req, res) => {
+
+router.put('/:id', async (req, res) => {
   try {
-    const updatedIngredient = {
-      name: req.body.name,
-    };
-    await Ingredient.findByIdAndUpdate(req.params.id, updatedIngredient);
-    res.redirect(`/ingredients/${req.params.id}`);
+    await Ingredient.findByIdAndUpdate(req.params.id, {
+      name: req.body.name.toLowerCase().trim(),
+    });
+    res.redirect('/ingredients');
   } catch (error) {
     console.log(error);
-    res.redirect("/ingredients");
+    res.redirect('/ingredients');
   }
 });
+
 
 router.delete("/:id", async (req, res) => {
   try {
