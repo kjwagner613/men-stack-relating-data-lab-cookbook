@@ -28,21 +28,10 @@
           <% recipes.forEach(recipe => { %>
           <li>
             <a href="/recipes/<%= recipe._id %>"><%= recipe.name %></a>
-            <% if (user && recipe.owner && user._id.toString() === recipe.owner._id.toString()) { %>
-              <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
-                <button type="submit">Delete</button>
-              </form>
-              <button onclick="window.location.href='/recipes/<%= recipe._id %>/edit'">
-                Edit
-              </button>
-            <% } else { %>
-              <p>View Only</p>
-            <% } %>
-          </li>
-          <% }) %>
-        </ul>
-        <% } else { %>
-        <p>You have not created any recipes yet.</p>
+            <form
+            
+            
+         
         <% } %>
       </div>
     </div>

@@ -2,19 +2,69 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= recipe.name %></title>
   </head>
   <body>
+    <!-- <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        color: #333;
+      }
+      p {
+        font-size: 18px;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        background-color: #fff;
+        padding: 10px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+      }
+      a {
+        text-decoration: none;
+        color: #007bff;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      button {
+        background-color: #dc3545;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #c82333;
+      }
+    </style> -->
     <%- include('../partials/_navbar.ejs') %>
+
     <h1><%= recipe.name %></h1>
-    <p>Time to cook: <%= recipe.timeToCook.hours %> hrs <%= recipe.timeToCook.minutes %> mins</p>
+    <p>Instructions: <%= recipe.instructions %></p>
+
     <h2>Ingredients:</h2>
+    <% if (recipe.ingredients && recipe.ingredients.length > 0) { %>
     <ul>
       <% recipe.ingredients.forEach(ingredient => { %>
-        <li><%= ingredient %></li>
+      <li><%= ingredient.name %></li>
       <% }) %>
     </ul>
+    <% } else { %>
+    <p>No ingredients listed.</p>
+    <% } %>
     <a href="/recipes">Back to Recipes</a>
   </body>
 </html>

@@ -1,7 +1,15 @@
-<nav>
-    <a href="/">Home</a>
-    <a href="sign-up">Sign Up</a>
-    <a href="sign-in">Sign In</a>
-    <a href="recipes">Recipes</a>
-    <a href="sign-out">Sign Out</a>
-</nav>
+<% if (user) { %>
+  <% if (typeof req !== 'undefined' && req.originalUrl === '/recipes') { %>
+    <a href="/recipes/new">New Recipe</a>
+    <a href="/auth/sign-out">Sign Out</a>
+  <% } else { %>
+    <a href="/recipes">Home</a>
+    <a href="/recipes">View my Recipes</a>
+    <a href="/recipes/new">New Recipe</a>
+    <a href="/recipes/new">Community</a>`
+    <a href="/auth/sign-out">Sign Out</a>
+  <% } %>
+<% } else { %>
+  <a href="/auth/sign-up">Sign Up</a>
+  <a href="/auth/sign-in">Sign In</a>
+<% } %>

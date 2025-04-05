@@ -1,0 +1,83 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+h1 {
+  color: #333;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+a {
+  text-decoration: none;
+  color: #007bff;
+}
+a:hover {
+  text-decoration: underline;
+}
+button {
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #c82333;
+}
+.index-grid {
+  display: grid;
+  grid-template-columns:  minmax(200px, auto) auto auto;
+  gap: 10px;
+}
+.index-grid-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.index-grid-item ul {
+  list-style-type: none;
+  padding: 0;
+}
+.index-grid-item li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px;
+  background-color: #f8f9fa;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.index-grid-item li button {
+  background-color: #007bff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.index-grid-item li button:hover {
+  background-color: #0056b3;
+}
+
+label.index {
+  display: flex; /* Use flexbox to align items horizontally */
+  align-items: center; /* Vertically center the checkbox and text */
+  margin-bottom: 10px; /* Add spacing between labels */
+}
+
+label.index input {
+  margin-right: 10px; /* Add spacing between the checkbox and the label text */
+}
