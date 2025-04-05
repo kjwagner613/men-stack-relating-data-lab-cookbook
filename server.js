@@ -18,6 +18,8 @@ const port = process.env.PORT ? process.env.PORT : "3000";
 
 const Recipe = require("./models/recipes.js");
 const path = require("path");
+const communityController = require("./controllers/community.js");
+
 
 mongoose.connect(process.env.MONGODB_URI);
 
@@ -55,7 +57,7 @@ app.use(isSignedIn);
 // Protected routes
 
 app.use("/ingredients", ingredientsController);
-
+app.use("/community", communityController);
 // Global error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);

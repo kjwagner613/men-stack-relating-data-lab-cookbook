@@ -8,13 +8,21 @@
     <title>Community</title>
   </head>
   <body>
-    <%- include('./partials/_navbar.ejs') %>
+    <%- include('../partials/_navbar.ejs') %>
 
     <h1>Welcome to your CookBook Community</h1>
 
     <% if (user) { %>
-    <h1>Welcome to the app, <%= user.username %>!</h1>
-    <p>
- 
+      <h2>Welcome, <%= user.username %>!</h2>
+    <% } %>
+
+    <h3>Community Members:</h3>
+    <ul>
+      <% users.forEach(member => { %>
+        <li>
+          <a href="/community/<%= member._id %>"><%= member.username %></a>
+        </li>
+      <% }) %>
+    </ul>
   </body>
 </html>
