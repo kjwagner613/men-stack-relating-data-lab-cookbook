@@ -1,14 +1,14 @@
 <link rel="stylesheet" href="/style.css" />
 <% if (user) { %>
-  <div class="navbar-links">
-    <a href="/">Home</a>
-    <a href="/recipes?filter=mine">View Recipes</a>
-    <a href="/recipes/new">New Recipe</a>
-    <a href="/ingredients">Ingredients</a>
-    <a href="/community">Community</a>
-    <a href="/auth/sign-out">Sign Out</a>
-    </div>
-<% } else { %>
+<div class="navbar-links">
+  <a href="/">Home</a>
+  <a href="/recipes?filter=mine">View Recipes</a>
+  <a href="/recipes/new">New Recipe</a>
+  <a href="/ingredients">Ingredients</a>
+  <a href="/community">Community</a>
+  <a href="/auth/sign-out">Sign Out</a>
+  <% } else { %>
   <a href="/auth/sign-up">Sign Up</a>
   <a href="/auth/sign-in">Sign In</a>
+</div>
 <% } %>

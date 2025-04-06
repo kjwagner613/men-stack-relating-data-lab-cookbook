@@ -5,6 +5,7 @@ body {
   padding: 20px;
   background-image: url("./assets/pepared.webp");
 }
+
 .navbar-links {
   position: fixed;
   top: 0;
@@ -41,6 +42,56 @@ h2 {
   padding: 10px;
   text-align: left;
   border-left: 4px solid white;
+}
+
+.sign-in-up-block {
+  display: inline-flex;
+
+
+}
+#password {
+  background-color: rgb(51, 51, 51);
+  border-bottom-color: rgb(235, 232, 240);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-left-color: rgb(235, 232, 240);
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-color: rgb(235, 232, 240);
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-top-color: rgb(235, 232, 240);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  box-sizing: border-box;
+  color: rgb(235, 232, 240);
+  padding: 10px;
+  border: 1px solid #ebe8f0;
+  border-radius: 5px;
+  background-color: #333333;
+  color: #ebe8f0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
 h3 {
@@ -108,6 +159,7 @@ button:hover {
   display: grid;
   grid-template-columns: minmax(200px, auto) auto auto;
   gap: 10px;
+  overflow: hidden
 }
 .index-grid-item {
   display: flex;
@@ -120,6 +172,8 @@ button:hover {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-left: 5vw;
   align-items: center;
+  max-height: 400px; /* Set a fixed height for the scrollable area */
+  overflow-y: auto; 
 }
 .p-index-grid {
   width: 100%;
