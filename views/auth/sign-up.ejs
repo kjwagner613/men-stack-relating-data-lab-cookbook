@@ -2,24 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sign Up</title>
 </head>
 <body>
   <h1>Create a new account!</h1>
+  <div class="sign-in-up-block">
   <form action="/auth/sign-up" method="POST">
-    <label for="username">Username:</label>
+    <label class="btn label" for="username">Username:</label>
     <input type="text" name="username" id="username" required />
-    <label for="password">Password:</label>
+    <label class="btn label" for="password">Password:</label>
     <input type="password" name="password" id="password" required />
-    <label for="confirmPassword">Confirm Password:</label>
+    <label class="btn label" for="confirmPassword">Confirm Password:</label>
     <input 
       type="password"
       name="confirmPassword"
       id="confirmPassword"
       required 
     />
-    <button type="submit">Sign up</button>
-  </form>
+    <button class="button" type="submit">Sign up</button>
+  </form></div>
 </body>
 </html>
