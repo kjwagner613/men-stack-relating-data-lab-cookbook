@@ -21,20 +21,23 @@
     </div>
     <% } %>
     <% if (user) { %>
+      <div class="rec-ind-h1-btns">
+      <h1 class="rec-ind">Recipes</h1>
       <div class="filter-buttons">
         <button onclick="window.location.href='/recipes?filter=mine'">My Recipes</button>
         <button onclick="window.location.href='/recipes?filter=others'">Other Users' Recipes</button>
         <button onclick="window.location.href='/recipes'">All Recipes</button>
       </div>
+    </div>
     <% } %>
     
-    <h1>Welcome to My Recipes</h1>
+    
     <div class="index-grid">
       <% if (recipes.length > 0) { %>
       <div class="index-grid-item">
         <ul>
           <% recipes.forEach(recipe => { %>
-          <li>
+          <li class="li-index-grid">
             <a href="/recipes/<%= recipe._id %>"><%= recipe.name %></a>
             <% if (user && recipe.owner && user._id.toString() === recipe.owner._id.toString()) { %>
               <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
@@ -50,7 +53,7 @@
           <% }) %>
         </ul>
       <% } else { %>
-        <p>You have not created any recipes yet.</p>
+        <p class="p-index-grid">You have not created any recipes yet.</p>
       <% } %>
       </div>
     </div>

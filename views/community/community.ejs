@@ -13,13 +13,13 @@
     <h1>Welcome to your CookBook Community</h1>
 
     <% if (user) { %>
-      <h2>Welcome, <%= user.username %>!</h2>
+    
     <% } %>
 
     <h3>Community Members:</h3>
     <ul>
       <% users.forEach(member => { %>
-        <li>
+        <li class="li-community">
           <a href="/community/<%= member._id %>"><%= member.username %></a>
         </li>
       <% }) %>

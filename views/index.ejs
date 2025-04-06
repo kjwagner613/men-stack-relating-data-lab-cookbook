@@ -11,9 +11,11 @@
     <%- include('./partials/_navbar.ejs') %>
   
     <% if (user) { %>
-    <h1>Welcome <%= user.username %>!</h1>
-    <p>
-      <a href="/auth/sign-out">Sign out</a>
+    <h1>Welcome, you are signed in</h1>
+    <h2>You have full access to all options</h2>
+    <p>Check out your community, you can see who else is a culinary 
+      aficionado, plus you can see what tasty treats they are 
+      whipping up!        
     </p>
     <% } else { %>
     <h1>Welcome to the Community Cookbook</h1>
